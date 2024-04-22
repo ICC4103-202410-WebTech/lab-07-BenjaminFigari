@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_15_142930) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_22_181938) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_142930) do
     t.datetime "published_at", null: false
     t.integer "answers_count", default: 0, null: false
     t.integer "likes_count", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "parent_post_id", null: false
+    t.index ["parent_post_id"], name: "index_posts_on_parent_post_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,4 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_142930) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "posts", "posts", column: "parent_post_id"
+  add_foreign_key "posts", "users"
 end
