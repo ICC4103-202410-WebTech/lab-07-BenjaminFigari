@@ -51,7 +51,10 @@ Make sure to create the relationships between the tables, so the database is pop
 user_john = User.find_by(name: "John Doe")
 johns_posts = user_john.posts
 
+puts "Posts for user John Doe:"
+
 johns_posts.each do |post|
+  puts "Post for user John Doe:"
   puts "Title: #{post.title}"
   puts "Content: #{post.content}"
   puts "Published at: #{post.published_at}"
@@ -59,6 +62,7 @@ johns_posts.each do |post|
   puts "Likes count: #{post.likes_count}"
   puts "\n"
 end
+
 ```
 
 2. Find all the tags that belong to a post with the title "Post 1".
@@ -66,7 +70,7 @@ end
 ```ruby
 post1 = Post.find_by(title: "Post 1")
 tags_for_post1 = post1.tags
-
+puts "Tags for post 1: "
 tags_for_post1.each do |tag|
   puts tag.name
 end
@@ -80,6 +84,7 @@ posts_with_tag1 = tag1.posts
 users_with_tag1_posts = User.joins(:posts).where(posts: { id: posts_with_tag1.pluck(:id) }).distinct
 
 users_with_tag1_posts.each do |user|
-  puts user.name
+  puts "User that have a post with the tag: Tag 1", user.name
+  puts "\n"
 end
 ```
