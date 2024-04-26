@@ -48,14 +48,46 @@ Make sure to create the relationships between the tables, so the database is pop
 1. Find all the posts that belong to a user with the name "John Doe".
 
 ```ruby
-### Code here
+user_john = User.find_by(name: "John Doe")
+johns_posts = user_john.posts
+
+johns_posts.each do |post|
+  puts "Title: #{post.title}"
+  puts "Content: #{post.content}"
+  puts "Published at: #{post.published_at}"
+  puts "Answers count: #{post.answers_count}"
+  puts "Likes count: #{post.likes_count}"
+  puts "\n"
+end
 ```
 
 2. Find all the tags that belong to a post with the title "Post 1".
 
 ```ruby
-### Code here
+post_1 = Post.find_by(title: "post1")
+tags_for_post_1 = post_1.tags
+
+tags_for_post_1.each do |tag|
+  puts tag.name
+end
 ```
+
+post_1 = Post.find_by(title: "Post 1")
+
+if post_1
+  tags_for_post_1 = post_1.tags
+
+  if tags_for_post_1
+    tags_for_post_1.each do |tag|
+      puts tag.name
+    end
+  else
+    puts "La publicación '#{post_1.title}' no tiene etiquetas asociadas."
+  end
+else
+  puts "No se encontró ninguna publicación con el título 'Post 1'."
+end
+
 
 3. Find all users that have a post with the tag "Tag 1".
 
