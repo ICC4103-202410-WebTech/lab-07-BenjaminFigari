@@ -40,14 +40,14 @@ post3 = user2.posts.create!(
   title: "Max Verstappen's Dominant Victory",
   content: "Max Verstappen displayed a dominant performance and secured victory at the Spanish Grand Prix.",
   published_at: Time.zone.now,
-  tags: [tag1, tag2, tag5]
+  tags: [tag2, tag5]
 )
 
 post4 = user3.posts.create!(
   title: "Lando Norris' Lightning Pit Stop",
   content: "Lando Norris amazed the crowd with a lightning-fast pit stop at the Italian Grand Prix.",
   published_at: Time.zone.now,
-  tags: [tag1, tag3]
+  tags: [tag3, tag5]
 )
 
 post5 = user4.posts.create!(
@@ -61,19 +61,19 @@ post6 = user5.posts.create!(
   title: "Fernando Alonso's Return to Podium",
   content: "Fernando Alonso made a stunning return to the podium at the French Grand Prix.",
   published_at: Time.zone.now,
-  tags: [tag1, tag2, tag5]
+  tags: [tag2, tag5]
 )
 
 post7 = user1.posts.create!(
   title: "John Doe's Pole Position",
   content: "John Doe secures pole position at the Belgian Grand Prix.",
   published_at: Time.zone.now,
-  tags: [tag1, tag2]
+  tags: [tag3, tag2]
 )
 
-post8 = user1.posts.create!(
+post8 = user3.posts.create!(
   title: "Victory at Silverstone Circuit",
-  content: "John Doe claims victory at the Silverstone Circuit once again!",
+  content: "Lando Norris wins at the Silverstone Circuit for the first time!",
   published_at: Time.zone.now,
   tags: [tag1, tag2, tag5]
 )

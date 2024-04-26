@@ -64,33 +64,22 @@ end
 2. Find all the tags that belong to a post with the title "Post 1".
 
 ```ruby
-post_1 = Post.find_by(title: "post1")
-tags_for_post_1 = post_1.tags
+post1 = Post.find_by(title: "Post 1")
+tags_for_post1 = post1.tags
 
-tags_for_post_1.each do |tag|
+tags_for_post1.each do |tag|
   puts tag.name
 end
 ```
 
-post_1 = Post.find_by(title: "Post 1")
-
-if post_1
-  tags_for_post_1 = post_1.tags
-
-  if tags_for_post_1
-    tags_for_post_1.each do |tag|
-      puts tag.name
-    end
-  else
-    puts "La publicación '#{post_1.title}' no tiene etiquetas asociadas."
-  end
-else
-  puts "No se encontró ninguna publicación con el título 'Post 1'."
-end
-
-
 3. Find all users that have a post with the tag "Tag 1".
 
 ```ruby
-### Code here
+tag1 = Tag.find_by(name: "Tag 1")
+posts_with_tag1 = tag1.posts
+users_with_tag1_posts = User.joins(:posts).where(posts: { id: posts_with_tag1.pluck(:id) }).distinct
+
+users_with_tag1_posts.each do |user|
+  puts user.name
+end
 ```
